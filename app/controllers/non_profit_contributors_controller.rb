@@ -1,0 +1,2 @@
+class NonProfitContributorsController < ApplicationController
+end

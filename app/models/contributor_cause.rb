@@ -1,0 +1,2 @@
+class ContributorCause < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class ContributorCausesController < ApplicationController
+end

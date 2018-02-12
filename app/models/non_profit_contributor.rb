@@ -1,0 +1,2 @@
+class NonProfitContributor < ApplicationRecord
+end
