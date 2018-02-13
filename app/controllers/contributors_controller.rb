@@ -1,6 +1,7 @@
 class ContributorsController < ApplicationController
 
   def show
+    @causes = Cause.all
     @contributor = Contributor.find(params[:id])
   end
 
@@ -33,7 +34,7 @@ class ContributorsController < ApplicationController
 
   def add
     @contributor = Contributor.find(params[:id])
-    render :add 
+    render :add
   end
 
   def add_money
