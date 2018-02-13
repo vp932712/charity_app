@@ -1,9 +1,5 @@
 class ContributorsController < ApplicationController
 
-  def index
-    @contributor = Contributor.all
-  end
-
   def show
     @contributor = Contributor.find(params[:id])
   end
@@ -13,26 +9,23 @@ class ContributorsController < ApplicationController
   end
 
   def create
-    @contributor = Contributor.create(private_params)
-    if @contributor.valid? ##########
-      redirect_to superhero_path(@contributor)
+    @contributor = Contributor.new(contributor_params)
+    if @contributor.save
+      log_in @contributor
+      flash[:success] = "Welcome to Charity App!"
+      redirect_to @contributor
     else
-      flash[:error] = @contributor.errors.full_messages
-      redirect_to new_superhero_path #########
+      render 'new'
     end
   end
 
-  def delete
-    @contributor = Contributor.find(params[:id])
-    @Contributor.destroy
-    redirect_to superheroes_path  ######
-  end
+
+
 
   private
 
-  def private_params
-    params.require(:contributor).permit(:name, :money, :belief)
-  end
-
-
+    def contributor_params
+      params.require(:contributor).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 end

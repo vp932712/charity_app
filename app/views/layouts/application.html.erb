@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>CharityApp</title>
@@ -10,5 +10,23 @@
 
   <body>
     <%= yield %>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+ 
+  <body>
+
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+
+
+    </div>
+
   </body>
 </html>
