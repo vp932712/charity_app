@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213143126) do
+ActiveRecord::Schema.define(version: 20180213163136) do
 
   create_table "causes", force: :cascade do |t|
     t.string "name"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180213143126) do
 
   create_table "contributors", force: :cascade do |t|
     t.string "name"
-    t.integer "money"
+    t.integer "money", default: 0
     t.string "belief"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

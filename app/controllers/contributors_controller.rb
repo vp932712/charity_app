@@ -18,6 +18,32 @@ class ContributorsController < ApplicationController
       render 'new'
     end
   end
+  #
+  # def edit
+  #   @contributor = Contributor.find(params[:id])
+  # end
+  #
+  # def update
+  #
+  #   @contributor = Contributor.find(params[:id])
+  #
+  #
+  #   redirect_to @contributor
+  # end
+
+  def add
+    @contributor = Contributor.find(params[:id])
+    render :add 
+  end
+
+  def add_money
+
+     @contributor = Contributor.find(params[:id])
+
+     @contributor.update_attribute(:money, (@contributor.money + params[:contributor][:money].to_i))
+
+     redirect_to @contributor
+  end
 
 
 
@@ -26,6 +52,6 @@ class ContributorsController < ApplicationController
 
     def contributor_params
       params.require(:contributor).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :money)
     end
 end

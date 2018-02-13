@@ -1,0 +1,5 @@
+<%= form_for @contributor, url: add_money_path do |f| %>
+<%= f.label "Amount" %>
+<%= f.text_field :money %>
+<%= f.submit "Add" %>
+<%end %>
