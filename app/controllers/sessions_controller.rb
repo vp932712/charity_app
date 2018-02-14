@@ -1,13 +1,14 @@
 class SessionsController < ApplicationController
 
   def new
+    @contributor = Contributor.new
+    @contributors = Contributor.all
   end
-
   def create
-    user = Contributor.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      redirect_to user
+    @contributor = Contributor.find_by(email: params[:session][:email].downcase)
+    if @contributor && @contributor.authenticate(params[:session][:password])
+      log_in(@contributor)
+      redirect_to @contributor
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
@@ -15,7 +16,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
-    redirect_to root_url
-  end
+     session[:contributor_id] = nil
+     redirect_to root_url
+   end
+
 end

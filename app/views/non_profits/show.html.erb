@@ -1,2 +1,4 @@
 <h3><%= @nonprofit.name %></h3>
 <h3><%= @nonprofit.description %></h3>
+
+<h5><%=link_to "Donate/Volunteer",{:controller => "non_profit_contributors", :action => "new", :nonprofit_id => @nonprofit.id } %></h5>

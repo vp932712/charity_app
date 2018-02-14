@@ -3,9 +3,8 @@
 <h3>money <%= @contributor.money %></h3>
 <h5><%=link_to "Add Money", add_path  %></h5>
 
+
 <h3>My Causes</h3>
-
-
 
 <ul>
   <%= form_for @contributor, url: update_causes_path  do |f| -%>
@@ -22,3 +21,23 @@
 <%@my_non_profits.each do |non| %>
 <h3><%= link_to non.name, non %></h3>
 <%end %>
+
+
+
+<% @feeds.each do |feed| %>
+<% if feed.volunteer && feed.donation > 0 %>
+<h4><%= "#{feed.contributor.name} has pledged to volunteer and has donated #{feed.donation}." %></h4>
+<% elsif feed.volunteer%>
+<h4><%="#{feed.contributor.name} has pledged to volunteer."  %></h4>
+<%else %>
+<h4><%= "#{feed.contributor.name} has donated #{feed.donation}" %></h4>
+<%end %>
+<%end %>
+
+
+
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>

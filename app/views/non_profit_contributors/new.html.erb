@@ -1,0 +1,11 @@
+
+<form action="/non_profit_contributors" method="post">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <%= tag(:input, :type => "hidden", :name => :contributor_id, :value => current_contributor.id) %>
+        <%= tag(:input, :type => "hidden", :name => :non_profit_id, :value => @nonprofit.id) %>
+        <%= tag(:input, :type => "text", :name => :donation, :placeholder => "Put your contribution") %><br>
+      <p>Check box if you want to pledge to volunteer <%= tag(:input, :name => :volunteer, :type => "checkbox", :checked => false) %></p><br>
+
+
+        <input type="submit" value="Donate">
+      </form>

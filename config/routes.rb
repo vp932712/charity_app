@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get "contributors/:id/add", to: "contributors#add", as:"add"
   patch 'contributors/:id', to: 'contributors#add_money', as:"add_money"
-
+  # post "/non_profit_contributors/new", to: "non_profit_contributors#new"
   patch 'contributors/:id/update', to: 'contributors#update_causes', as:"update_causes"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
