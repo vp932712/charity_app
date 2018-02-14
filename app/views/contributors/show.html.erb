@@ -16,3 +16,9 @@
    <%= f.submit "Save Changes" %>
  <% end -%>
 </ul>
+
+<h2>Recomended Organisations</h2>
+
+<%@my_non_profits.each do |non| %>
+<h3><%= link_to non.name, non %></h3>
+<%end %>

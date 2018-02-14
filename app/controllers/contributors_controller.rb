@@ -2,6 +2,8 @@ class ContributorsController < ApplicationController
 
   def show
     @contributor = Contributor.find(params[:id])
+    @causes = @contributor.causes
+    @my_non_profits = @contributor.my_recomended
   end
 
   def new

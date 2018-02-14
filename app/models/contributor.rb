@@ -21,4 +21,12 @@ def Contributor.digest(string)
 end
 
 
+  def my_recomended
+   charaties =  causes.collect do |cause|
+     NonProfitCause.where(cause_id: cause.id)
+   end
+    final = charaties.collect {|instance| NonProfit.find(instance.non_profit_id)}
+
+  end
+
 end
