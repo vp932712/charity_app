@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   get "contributors/:id/add", to: "contributors#add", as:"add"
   patch 'contributors/:id', to: 'contributors#add_money', as:"add_money"
 
+  patch 'contributors/:id/update', to: 'contributors#update_causes', as:"update_causes"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

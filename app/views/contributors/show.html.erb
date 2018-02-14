@@ -3,7 +3,16 @@
 <h3>money <%= @contributor.money %></h3>
 <h5><%=link_to "Add Money", add_path  %></h5>
 
+<h3>My Causes</h3>
 
-<% @causes.each do |cause| %>
-<h4><%= cause.name %></h4>
-<%end %>
+
+
+<ul>
+  <%= form_for @contributor, url: update_causes_path  do |f| -%>
+
+   <% Cause.all.each do |i| -%>
+     <div><%= i.name -%> <%= check_box_tag 'contributor[causes][]', i.id, @contributor.causes.detect{|ui| ui.name == i.name} -%></div>
+   <% end -%>
+   <%= f.submit "Save Changes" %>
+ <% end -%>
+</ul>

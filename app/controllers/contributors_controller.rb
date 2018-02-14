@@ -1,7 +1,6 @@
 class ContributorsController < ApplicationController
 
   def show
-    @causes = Cause.all
     @contributor = Contributor.find(params[:id])
   end
 
@@ -39,6 +38,7 @@ class ContributorsController < ApplicationController
 
   def add_money
 
+
      @contributor = Contributor.find(params[:id])
 
      @contributor.update_attribute(:money, (@contributor.money + params[:contributor][:money].to_i))
@@ -46,6 +46,16 @@ class ContributorsController < ApplicationController
      redirect_to @contributor
   end
 
+  def update_causes
+
+    @contributor = Contributor.find(params[:id])
+    ContributorCause.where("contributor_id = #{@contributor.id}").delete_all
+    params[:contributor][:causes].each do |cause_id|
+      ContributorCause.create(contributor_id: @contributor.id, cause_id: cause_id.to_i )
+    end
+
+  redirect_to @contributor
+  end
 
 
 
