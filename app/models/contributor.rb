@@ -22,11 +22,16 @@ end
 
 
   def my_recomended
-   charaties =  causes.collect do |cause|
-     NonProfitCause.where(cause_id: cause.id)
-   end
-    final = charaties.collect {|instance| NonProfit.find(instance.non_profit_id)}
+   id =  causes.collect {|cause| cause.id}
+  charaties =  id.collect do |num|
+      NonProfitCause.where(cause_id: num)
+    end
+    lol = charaties.flatten
+    nonProftiId = lol.collect {|instance| instance.non_profit_id}.uniq
 
+
+     final =  NonProfit.find(nonProftiId)
+     final
   end
 
 end
