@@ -1,0 +1,4 @@
+<h1>All Charities</h1>
+<% NonProfit.all.each do |nonprofit| %>
+<%= link_to "#{nonprofit.name}", (nonprofit) %>
+<% end %>
