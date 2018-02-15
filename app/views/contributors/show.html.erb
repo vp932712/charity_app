@@ -1,85 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <!--
+    	The codes are free, but we require linking to our web site.
+    	Why to Link?
+    	A true story: one girl didn't set a link and had no decent date for two years, and another guy set a link and got a top ranking in Google!
+    	Where to Put the Link?
+    	home, about, credits... or in a good page that you want
+    	THANK YOU MY FRIEND!
+    -->
+    <title>Profile page with activities - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	body{
+    margin-top:20px;
+    background:#eee;
+}
+
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/*panel heading*/
+.panel-heading {
+    padding: 15px 10px 15px 10px;
+    border-bottom: 0px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: #f5f6f8;
+    border-color: none!important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #a9b1bc!important;
+    border-color: #a9b1bc!important;
+}
+
+.btn-primary:hover {
+    background-color: #969ca5!important;
+}
+
+.profile-content h3{
+    margin:15px 0 10px 0!important;
+	}
+
+.stats {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+    display: table;
+    }
+
+.stats .statis {
+    display: table-cell;
+    width: 25%;
+    vertical-align: top;
+    }
+
+.ibox-content {
+	background-color: #FFFFFF;
+	color: inherit;
+	padding: 0px 20px 20px 20px;
+	}
+
+.feed-activity-list .feed-element {
+	border-bottom: 1px solid #E7EAEC;
+	}
+
+.feed-element {
+	padding: 15px 0 15px 0;
+	}
+
+.feed-element img.img-circle, .dropdown-messages-box img.img-circle {
+	width: 38px;
+	height: 38px;
+	}
+
+.feed-element > .pull-left {
+	margin-right: 10px;
+	}
+
+.feed-element .well {
+	border: 1px solid #E7EAEC;
+	box-shadow: none;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	padding: 10px 20px;
+	font-size: 11px;
+	line-height: 16px;
+	}
+
+.img-circle {
+	border-radius: 50%;
+	}
+
+.text-navy {
+	color: #1AB394;
+	}
+
+.feed-element .actions {
+	margin-top: 10px;
+	}
+
+.feed-photo {
+	height: 180px;
+	border-radius: 4px;
+	overflow: hidden;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	}
+
+.btn-white {
+	color: inherit;
+	background: white;
+	border: 1px solid #E7EAEC;
+	}
+
+.btn {
+	border-radius: 3px;
+	}
+
+.btn-cprimary {
+	background-color: #f5f6f8;
+	border-color: #f5f6f8;
+	color: #333;
+	}
+
+.btn-danger {
+	background-color: #ef5352;
+	border-color: #ef5352;
+	color: #FFFFFF;
+	}
+
+.btn {
+	border-radius: 3px;
+	}
+
+@media(min-width: 768px) and (max-width: 991px) {
+		.feed-photo {
+			width: 100%;
+			height: 350px!important;
+			border-radius: 4px;
+			overflow: hidden;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			}
+
+		.btn-primary{
+			margin: 15px auto;
+			}
+}
+
+@media(min-width: 480px) and (max-width: 767px) {
+		.feed-photo {
+			width: 100%;
+			height: 300px!important;
+			border-radius: 4px;
+			overflow: hidden;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			}
+
+		.btn-primary{
+			margin: 15px auto;
+			}
+}
+
+@media(max-width:480px) {
+		.feed-photo {
+		width: 100%;
+		border-radius: 4px;
+		overflow: hidden;
+		margin-right: 10px;
+		margin-bottom: 10px;
+		}
+				.btn-primary{
+			margin: 15px auto;
+			}
+
+}
+    </style>
 </head>
 <body>
-  <nav class="navbar default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">Home</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/login">Sign In<span class="sr-only">(current)</span></a></li>
-          <li><a href="/contributors/new">Sign Up</a></li>
-          <li class="active"><%= link_to "Log Out", logout_path%><span class="sr-only">(current)</span></li>
-        </ul>
-
-      </div><!-- /.navbar-collapse -->
-      <div class="jumbotron jumbotron-billboard">
-        <div class="container">
-          <h3>Username: <%= @contributor.name %></h3>
-          <h3>Email: <%= @contributor.email %></h3>
-          <h3>Money: $<%= @contributor.money %></h3>
-          <h5><%=link_to "Add Money", add_path  %></h5>
-
-          <div class="w3-center">
-            <h3>My Causes:</h3>
-            <ul>
-              <%= form_for @contributor, url: update_causes_path  do |f| -%>
-
-               <% Cause.all.each do |i| -%>
-                 <div><%= i.name -%> <%= check_box_tag 'contributor[causes][]', i.id, @contributor.causes.detect{|ui| ui.name == i.name} -%></div>
-               <% end -%>
-               <%= f.submit "Save Changes" %>
-             <% end -%>
-            </ul>
-          </div>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="content">
+<div id="pad-wrapper">
+    <div class="col-md-4">
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Details</strong></div>
+    <div class="panel-body no-padding">
+        <div class="ibox-content no-padding border-left-right">
+            <img alt="image" class="img-responsive" src="http://theivykey.com/images/no-profile-image.png" width="100" height="100">
         </div>
-      </div>
+        <div class="ibox-content profile-content">
+          <h3><%= @contributor.name.capitalize %></h3>
+          <p>Email: <%= @contributor.email%></p>
+          <p>Money: $<%= @contributor.money %></p>
 
-
-      <h4>Recomended Organisations</h4>
-
-<%@my_non_profits.each do |non| %>
-<h3><%= link_to non.name, non %></h3>
-<%end %>
-
-
-
-<% @feeds.each do |feed| %>
-<% if feed.volunteer && feed.donation > 0 %>
-<h4><%= "#{feed.contributor.name} has pledged to volunteer and has donated #{feed.donation}." %></h4>
-<% elsif feed.volunteer%>
-<h4><%="#{feed.contributor.name} has pledged to volunteer."  %></h4>
-<%else %>
-<h4><%= "#{feed.contributor.name} has donated #{feed.donation}" %></h4>
-<%end %>
-<%= link_to "Like"  %>
-<%= link_to "Comment", feed %>
-<%end %>
+              <div class="user-button">
+                <div class="row">
+                    <div class="col-md-6">
+                    <a href="/contributors/<%= @contributor.id %>/add"  class="btn btn-primary btn-sm btn-block">
+                        <i class="fa fa-dollar"></i> Add Money</button>
+                      </a>
+                    </div>
 
 
 
-<% if @message %>
-  <div class="center alert">
-    <p><%= @message %></p>
+                </div>
+            </div>
+        </div><!-- /profile-content -->
+    </div>
+    </div>
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>My Causes</strong></div>
+    <div class="panel-body no-padding">
+      <ul>
+        <%= form_for @contributor, url: update_causes_path  do |f| -%>
+
+         <% Cause.all.each do |i| -%>
+           <div> <%= check_box_tag 'contributor[causes][]', i.id, @contributor.causes.detect{|ui| ui.name == i.name} -%> <%= i.name -%></div>
+         <% end -%>
+         <%= f.submit "Save Changes" %>
+       <% end -%>
+      </ul>
+
+    </div>
+    </div>
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Recomended Non-Profits</strong></div>
+    <div class="panel-body no-padding">
+      <ul>
+        <%@my_non_profits.each do |non| %>
+        <div><%= link_to non.name, non %></div>
+        <%end %>
+      </ul>
+
+    </div>
+    </div>
+
+    </div>
+
+
+    <div class="col-md-8">
+    <div class="panel panel-default">
+    <div class="panel-heading"><strong>Activities</strong></div>
+    <div class="panel-body">
+
+        <div class="ibox-content">
+           <div class="feed-activity-list">
+
+             <% @feeds.each do |feed| %>
+             <% if feed.volunteer && feed.donation > 0 %>
+             <div class="feed-element">
+                 <a href="#" class="pull-left">
+                 <img alt="image" class="img-circle" src="http://theivykey.com/images/no-profile-image.png">
+                 </a>
+
+                 <div class="media-body ">
+
+                     <%= "#{feed.contributor.name.capitalize} has pledged to volunteer and has donated #{feed.donation}." %><br>
+                     <small class="text-muted"><%= feed.created_at %></small>
+
+                     <div class="actions">
+                     <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                     <a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> Love</a>
+                     <a href="/non_profit_contributors/<%= feed.id %>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Comment</a>
+
+                     </div>
+                 </div>
+             </div><!-- feed-element-->
+
+             <% elsif feed.volunteer%>
+             <div class="feed-element">
+                 <a href="#" class="pull-left">
+                 <img alt="image" class="img-circle" src="http://theivykey.com/images/no-profile-image.png">
+                 </a>
+
+                 <div class="media-body ">
+
+                    <%="#{feed.contributor.name.capitalize} has pledged to volunteer."  %><br>
+                     <small class="text-muted"><%= feed.created_at %></small>
+
+                     <div class="actions">
+                     <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                     <a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> Love</a>
+                     <a href="/non_profit_contributors/<%= feed.id %>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Comment</a>
+
+                     </div>
+                 </div>
+             </div><!-- feed-element-->
+
+             <%else %>
+             <div class="feed-element">
+                 <a href="#" class="pull-left">
+                 <img alt="image" class="img-circle" src="http://theivykey.com/images/no-profile-image.png">
+                 </a>
+
+                 <div class="media-body ">
+
+                    <%= "#{feed.contributor.name.capitalize} has donated $#{feed.donation} to #{feed.non_profit.name}" %><br>
+                     <small class="text-muted"><%= feed.created_at %></small>
+
+                     <div class="actions">
+                     <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                     <a class="btn btn-xs btn-danger"><i class="fa fa-heart"></i> Love</a>
+                     <a href="/non_profit_contributors/<%= feed.id %>" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> Comment</a>
+
+
+                     </div>
+                 </div>
+             </div><!-- feed-element-->
+
+             <%end %>
+
+             <%end %>
+
+
+
+
+
+            <button class="btn btn-cprimary btn-block ">
+                <i class="fa fa-arrow-down"></i> Show More
+            </button>
+
+        </div><!-- feed-activity-list -->
+    </div><!--ibox-content -->
+    </div>
+    </div>
+    </div>
+
+    <div class="clearfix"></div>
+     <footer id="footer">
+        <div class="text-center clearfix">
+                <br><br>
+                <a href="#" class="btn btn-xs btn-circle btn-twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="btn btn-xs btn-circle btn-facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="btn btn-xs btn-circle btn-gplus"><i class="fa fa-google-plus"></i></a>
+            </p>
+        </div>
+    </footer>
   </div>
-<% end %>
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
