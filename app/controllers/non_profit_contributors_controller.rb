@@ -42,7 +42,7 @@ class NonProfitContributorsController < ApplicationController
     def show
       @nonprofit_contributor = NonProfitContributor.find(params[:id])
       arr = LikeComment.where(non_profit_contributor_id: @nonprofit_contributor.id)
-      @likeComments = arr
+      @likeComments = arr.reverse
       @newComment = LikeComment.new
     end
 
