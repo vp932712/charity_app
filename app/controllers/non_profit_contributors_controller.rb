@@ -32,11 +32,23 @@ class NonProfitContributorsController < ApplicationController
       elsif @nonprofit_contributor.volunteer == true
          @message = @nonprofit_contributor.volunteer_now
 
-       else @nonprofit_contributor.donation > 0 
+       else @nonprofit_contributor.donation > 0
 
          @message = @nonprofit_contributor.donate_money
         end
     redirect_to contributor_path(@nonprofit_contributor.contributor, :message => @message)
+    end
+
+    def show
+      @nonprofit_contributor = NonProfitContributor.find(params[:id])
+      arr = LikeComment.where(non_profit_contributor_id: @nonprofit_contributor.id)
+      @likeComments = arr
+      @newComment = LikeComment.new
+    end
+
+    def createnewcomment
+     contributor = LikeComment.create(:contributor_id => params[:contributor_id], :non_profit_contributor_id => params[:non_profit_contributor_id], :like => false, :comment => params[:comment])
+      redirect_to contributor.non_profit_contributor
     end
 
 end

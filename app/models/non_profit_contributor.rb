@@ -2,6 +2,8 @@ class NonProfitContributor < ApplicationRecord
   belongs_to :contributor
   belongs_to :non_profit
   validates :donation, numericality: { only_integer: true }
+  has_many :like_comments
+  has_many :contributors, through: :like_comments
 
   def donate?
      self.contributor.money >= self.donation

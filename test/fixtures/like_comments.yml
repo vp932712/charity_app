@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contributor_id: 1
+  non_profit_contributor_id: 1
+  like: false
+  comment: MyText
+
+two:
+  contributor_id: 1
+  non_profit_contributor_id: 1
+  like: false
+  comment: MyText

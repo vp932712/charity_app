@@ -3,6 +3,8 @@ has_many :non_profit_contributors
 has_many :non_profits, through: :non_profit_contributors
 has_many :contributor_causes
 has_many :causes, through: :contributor_causes
+has_many :like_comments
+has_many :non_profit_contributors, through: :like_comments
 
 before_save { self.email = email.downcase }
 validates :name,  presence: true, length: { maximum: 50 }
