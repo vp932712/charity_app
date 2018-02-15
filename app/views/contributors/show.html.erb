@@ -1,24 +1,69 @@
-<h2><%= @contributor.name %></h2>
-<h3><%= @contributor.email %></h3>
-<h3>money <%= @contributor.money %></h3>
-<h5><%=link_to "Add Money", add_path  %></h5>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Home</a>
+      </div>
 
-<h3>My Causes</h3>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/login">Sign In<span class="sr-only">(current)</span></a></li>
+          <li><a href="/contributors/new">Sign Up</a></li>
+          <li class="active"><%= link_to "Log Out", logout_path%><span class="sr-only">(current)</span></li>
+        </ul>
+
+      </div><!-- /.navbar-collapse -->
+      <div class="jumbotron jumbotron-billboard">
+        <div class="container">
+          <h3>Username: <%= @contributor.name %></h3>
+          <h3>Email: <%= @contributor.email %></h3>
+          <h3>Money: $<%= @contributor.money %></h3>
+          <h5><%=link_to "Add Money", add_path  %></h5>
+
+          <div class="w3-center">
+            <h3>My Causes:</h3>
+            <ul>
+              <%= form_for @contributor, url: update_causes_path  do |f| -%>
+
+               <% Cause.all.each do |i| -%>
+                 <div><%= i.name -%> <%= check_box_tag 'contributor[causes][]', i.id, @contributor.causes.detect{|ui| ui.name == i.name} -%></div>
+               <% end -%>
+               <%= f.submit "Save Changes" %>
+             <% end -%>
+            </ul>
+          </div>
+        </div>
+      </div>
 
 
+      <h4>Recomended Organisations</h4>
 
-<ul>
-  <%= form_for @contributor, url: update_causes_path  do |f| -%>
+      <% @my_non_profits.each do |non| %>
+      <p><%= link_to non.name, non %></p>
+      <% end %>
 
-   <% Cause.all.each do |i| -%>
-     <div><%= i.name -%> <%= check_box_tag 'contributor[causes][]', i.id, @contributor.causes.detect{|ui| ui.name == i.name} -%></div>
-   <% end -%>
-   <%= f.submit "Save Changes" %>
- <% end -%>
-</ul>
-
-<h2>Recomended Organisations</h2>
-
-<%@my_non_profits.each do |non| %>
-<h3><%= link_to non.name, non %></h3>
-<%end %>
+    </div><!-- /.container-fluid -->
+  </nav>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
