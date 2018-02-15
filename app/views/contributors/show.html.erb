@@ -58,12 +58,28 @@
 
       <h4>Recomended Organisations</h4>
 
-      <% @my_non_profits.each do |non| %>
-      <p><%= link_to non.name, non %></p>
-      <% end %>
+<%@my_non_profits.each do |non| %>
+<h3><%= link_to non.name, non %></h3>
+<%end %>
 
-    </div><!-- /.container-fluid -->
-  </nav>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</body>
-</html>
+
+
+<% @feeds.each do |feed| %>
+<% if feed.volunteer && feed.donation > 0 %>
+<h4><%= "#{feed.contributor.name} has pledged to volunteer and has donated #{feed.donation}." %></h4>
+<% elsif feed.volunteer%>
+<h4><%="#{feed.contributor.name} has pledged to volunteer."  %></h4>
+<%else %>
+<h4><%= "#{feed.contributor.name} has donated #{feed.donation}" %></h4>
+<%end %>
+<%= link_to "Like"  %>
+<%= link_to "Comment", feed %>
+<%end %>
+
+
+
+<% if @message %>
+  <div class="center alert">
+    <p><%= @message %></p>
+  </div>
+<% end %>

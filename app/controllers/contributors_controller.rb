@@ -4,6 +4,7 @@ class ContributorsController < ApplicationController
     @contributor = Contributor.find(params[:id])
     @causes = @contributor.causes
     @my_non_profits = @contributor.my_recomended
+    @feeds = NonProfitContributor.all.last(10).reverse
   end
 
   def new
@@ -13,25 +14,14 @@ class ContributorsController < ApplicationController
   def create
     @contributor = Contributor.new(contributor_params)
     if @contributor.save
-      log_in @contributor
+      log_in(@contributor)
       flash[:success] = "Welcome to Charity App!"
       redirect_to @contributor
     else
       render 'new'
     end
   end
-  #
-  # def edit
-  #   @contributor = Contributor.find(params[:id])
-  # end
-  #
-  # def update
-  #
-  #   @contributor = Contributor.find(params[:id])
-  #
-  #
-  #   redirect_to @contributor
-  # end
+
 
   def add
     @contributor = Contributor.find(params[:id])

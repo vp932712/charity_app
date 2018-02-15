@@ -1,0 +1,15 @@
+<% @likeComments.each do |likeComment| %>
+<p><%= likeComment.comment %></p>
+<%end %>
+
+
+<form action="/non_profit_contributors/:id/add_comment" method="post">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <%= tag(:input, :type => "hidden", :name => :contributor_id, :value => current_contributor.id) %>
+        <%= tag(:input, :type => "hidden", :name => :non_profit_contributor_id, :value => @nonprofit_contributor.id) %>
+        <%= tag(:input, :type => "text", :name => :comment, :placeholder => "Comments...") %><br>
+      <p>Check box if you want to Like <%= tag(:input, :name => :like, :type => "checkbox", :checked => false) %></p><br>
+
+
+        <input type="submit" value="Add Comment">
+      </form>
