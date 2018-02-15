@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/signup',  to: 'contributors#create'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
-  delete '/logout',  to: 'sessions#destroy'
+  get '/logout',  to: 'sessions#destroy'
   get "contributors/:id/add", to: "contributors#add", as:"add"
   patch 'contributors/:id', to: 'contributors#add_money', as:"add_money"
   # post "/non_profit_contributors/new", to: "non_profit_contributors#new"

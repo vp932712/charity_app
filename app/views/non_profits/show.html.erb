@@ -19,13 +19,13 @@
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
         </button>
-        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/contributors/<%= current_contributor.id %>">Home</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/contributors/<%= current_contributor.id %>">Welcome <%= current_contributor.name %></a></li>
+          <li><a href="#">Welcome <%= current_contributor.name %></a></li>
           <li class="active"><%= link_to "Log Out", logout_path%><span class="sr-only">(current)</span></li>
         </ul>
 
@@ -34,9 +34,8 @@
         <div class="container">
           <h3><%= @nonprofit.name %></h3>
           <p><%= @nonprofit.description %></p>
-          <h5 class="btn btn-primary btn-sm"><%=link_to "Donate/Volunteer",{:controller => "non_profit_contributors", :action => "new", :nonprofit_id => @nonprofit.id } %></h5>
-          <p><a class="btn btn-primary btn-sm"  href="/non_profit_contributors/new?nonprofit_id=<%= @nonprofit.id %>">Donate/Volunteer</a> 
-          <p><a class="btn btn-primary btn-sm" href="/contributors/<%= current_contributor.id %>" role="button">Back to Profile</a></p>
+          <p><a class="btn btn-primary btn-sm"  href="/non_profit_contributors/new?nonprofit_id=<%= @nonprofit.id %>">Donate/Volunteer</a>
+          <a class="btn btn-primary btn-sm" href="/contributors/<%= current_contributor.id %>" role="button">Back to Profile</a></p>
         </div>
       </div>
     </div><!-- /.container-fluid -->
