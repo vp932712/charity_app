@@ -21,13 +21,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/contributors/<%= current_contributor.id %>">Home</a>
+
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#">Welcome <%= current_contributor.name %></a></li>
+          <li><a>Welcome <%= current_contributor.name %></a></li>
+
+          <li class="active"><%= link_to "Home", "/contributors/#{current_contributor.id}"%><span class="sr-only">(current)</span></li>
+           <li class="active"><%= link_to "Non-Profits", non_profits_path%><span class="sr-only">(current)</span></li>
           <li class="active"><%= link_to "Log Out", logout_path%><span class="sr-only">(current)</span></li>
         </ul>
 
@@ -41,7 +44,7 @@
             <%= tag(:input, :type => "hidden", :name => :non_profit_id, :value => @nonprofit.id) %>
             <p>$<%= tag(:input, :type => "text", :name => :donation, :placeholder => "Donation Amount") %></p><br>
           <p><%= tag(:input, :name => :volunteer, :type => "checkbox", :checked => false) %> Check box if you want to pledge to volunteer</p>
-            <input type="submit" value="Donate">
+            <input type="submit" value="Contribute">
           </form>
         </div>
       </div>

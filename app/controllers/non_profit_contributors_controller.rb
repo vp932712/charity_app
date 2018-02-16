@@ -9,6 +9,11 @@ class NonProfitContributorsController < ApplicationController
 
 
   def create
+    if (params[:donation] == "" && !(params[:volunteer])) || params[:donation].to_i > current_contributor.money
+
+
+    else
+     
 
     if params[:donation] == ""
       @nonprofit_contributor = NonProfitContributor.create(
@@ -37,6 +42,7 @@ class NonProfitContributorsController < ApplicationController
          @message = @nonprofit_contributor.donate_money
         end
     redirect_to contributor_path(@nonprofit_contributor.contributor, :message => @message)
+  end
     end
 
     def show

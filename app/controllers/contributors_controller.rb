@@ -4,7 +4,7 @@ class ContributorsController < ApplicationController
     @contributor = Contributor.find(params[:id])
     @causes = @contributor.causes
     @my_non_profits = @contributor.my_recomended
-    @feeds = NonProfitContributor.all.last(10).reverse
+    @feeds = NonProfitContributor.all.last(40).reverse
   end
 
   def new

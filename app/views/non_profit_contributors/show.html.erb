@@ -149,6 +149,16 @@ body{margin-top:20px;}
     </style>
 </head>
 <body>
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><a>Welcome <%= current_contributor.name %></a></li>
+      
+      <li class="active"><%= link_to "Home", "/contributors/#{current_contributor.id}"%><span class="sr-only">(current)</span></li>
+       <li class="active"><%= link_to "Non-Profits", non_profits_path%><span class="sr-only">(current)</span></li>
+      <li class="active"><%= link_to "Log Out", logout_path%><span class="sr-only">(current)</span></li>
+    </ul>
+
+  </div><!-- /.navbar-collapse -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <section class="content-item" id="comments">
     <div class="container">
