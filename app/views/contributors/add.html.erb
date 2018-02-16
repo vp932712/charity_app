@@ -38,17 +38,18 @@
       </div><!-- /.navbar-collapse -->
       <div class="jumbotron jumbotron-billboard">
         <div class="container">
-          <h2 class="w3-margin w3-jumbo">Charity App</h2>
-          <h2>Add Money</h2>
+
+          <h3>Add Money</h3>
+          <p>Add money to your account so you can donate to your favorite charity.</p><br>
 
           <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <!-- <div class="col-md-6 col-md-offset-3"> -->
               <%= form_for @contributor, url: add_money_path do |f| %>
               <%= f.label "Amount" %>
               <%= f.text_field :money %>
-              <%= f.submit "Add" %>
+              <div><%= f.submit "Add" %></div>
               <%end %>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>
